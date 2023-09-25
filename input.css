@@ -4,7 +4,7 @@
 
 body,
 #sideNav,
-main {
+main, #addListPopup {
     background-color: #eeeeee;
 }
 
