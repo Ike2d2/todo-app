@@ -1,5 +1,5 @@
-let list = document.getElementById("todoList");
-let mainHead = document.getElementById("mainHead");
+const list = document.getElementById("todoList");
+const mainHead = document.getElementById("mainHead");
 
 let selected = 0;
 function setSelected(x) {
@@ -7,12 +7,28 @@ function setSelected(x) {
     renderList();
 }
 
+const listItems = [];
+function addListItem(x) {
+    listItems.push(
+        {
+            title: x,
+            items: [{
+                contents: 'Do the Dishes',
+                done: false,
+            },
+            {
+                contents: 'Do Homework',
+                done: true,
+            }]
+        }
+    )
+    renderList();
+}
+
 function renderList() {
     list.innerHTML = null;
-    new Array(9).fill().forEach((e, i) => {
-        let frag = document.createDocumentFragment();
-
-        let item = document.createElement("div");
+    listItems.forEach((e, i) => {
+        const item = document.createElement("div");
         item.className = `flex flex-col h-20 w-full flex-shrink-0 px-1 border-b-2${i === selected ? ' selected' : ''}`;
         item.setAttribute('key', i);
 
@@ -20,35 +36,35 @@ function renderList() {
             setSelected(i)
         })
 
-        let span1 = document.createElement("span");
+        const span1 = document.createElement("span");
         span1.className = "font-bold text-lg";
-        span1.innerText = "List " + (i + 1);
+        span1.innerText = e.title;
 
-        let span2 = document.createElement("span");
-        span2.className = "text-sm line-clamp-2 overflow-hidden";
-        span2.innerText = "List Contents Preview List Contents Preview List Contents Preview List Contents Preview List Contents Preview List Contents Preview List Contents Preview List Contents Preview"
-
-        item.append(span1, span2);
-        frag.append(item);
-        list.append(frag);
+        item.append(span1);
+        list.append(item);
     })
-    mainHead.innerText = "List " + (selected + 1)
+    mainHead.innerText = listItems[selected].title
 }
 
-renderList()
+const addListPopup = document.getElementById("addListPopup");
+const addListInput = document.getElementById("addListInput");
+const addListButton = document.getElementById("addListButton");
 
-let addListPopup = document.getElementById("addListPopup");
-let addListInput = document.getElementById("addListInput");
+addListInput.addEventListener('blur', () => {
+    addListPopup.classList.add('hidden');
+})
 
 addList.addEventListener("click", (e) => {
-    addListInput.value= "";
-    addListPopup.classList.toggle('hidden');
+    addListInput.value = "";
+    addListPopup.classList.remove('hidden');
     addListInput.focus();
+    AddList.setAttribute('disabled')
+})
 
-    const id = setInterval(() => {
-        if(document.activeElement !== addListInput){
-            addListPopup.classList.toggle('hidden');
-            clearInterval(id);
-        }
-    }, 100)
+addListButton.addEventListener('pointerdown', () => addListItem(addListInput.value));
+addListInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        addListItem(addListInput.value);
+        addListInput.blur();
+    }
 })
