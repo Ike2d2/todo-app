@@ -68,12 +68,13 @@ addListInput.addEventListener("blur", () => {
   addListPopup.classList.add("hidden");
 });
 
-addListButton.addEventListener("pointerdown", () =>
-  addListItem(addListInput.value)
+addListButton.addEventListener(
+  "pointerdown",
+  () => addListInput.value && addListItem(addListInput.value)
 );
 addListInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    addListItem(addListInput.value);
+    addListInput.value && addListItem(addListInput.value);
     addListInput.blur();
   }
 });
