@@ -99,8 +99,14 @@ function renderMain() {
         div.innerText = e.contents;
         div.className = 'flex items-center justify-center h-20 border-b-2';
 
+        const task = document.createElement('div');
+        task.className = 'flex items-center justify-center h-full w-full flex-grow-1'
+
+        const taskInput = document.createElement('input');
+        taskInput.setAttribute('type','text');
+
         const buttons = document.createElement('div');
-        buttons.className = 'buttons flex items-center justify-center text-3xl';
+        buttons.className = 'buttons flex items-center justify-center text-3xl w-16';
 
         const edit = document.createElement('i');
         edit.className = "ri-edit-line text-neutral-300";
@@ -108,8 +114,9 @@ function renderMain() {
         const trash = document.createElement('i');
         trash.className = "ri-delete-bin-6-line text-neutral-300";
 
+        task.append(taskInput);
         buttons.append(edit, trash);
-        div.append(buttons)
+        div.append(task, buttons)
         ul.append(div);
     })
     const addTask = document.createElement('div');
