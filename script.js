@@ -83,11 +83,11 @@ addListInput.addEventListener("keypress", (e) => {
 const mainBody = document.getElementById('mainBody');
 
 function renderMain() {
-    const selected = listItems[selected];
+    const toDisplay = listItems[selected];
     mainBody.innerHTML = null;
-    mainHead.innerText = selected.title;
+    mainHead.innerText = toDisplay.title;
     const ul = document.createElement('ul');
-    selected.items.forEach((e) => {
+    toDisplay.items.forEach((e) => {
         const li = document.createElement('li');
         li.innerText = e.contents;
         ul.append(li);
