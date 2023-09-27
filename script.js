@@ -5,6 +5,7 @@ let selected = 0;
 function setSelected(x) {
   selected = x;
   renderList();
+  renderMain();
 }
 
 const listItems = [];
@@ -23,6 +24,7 @@ function addListItem(x) {
     ],
   });
   renderList();
+  renderMain();
 }
 
 function renderList() {
@@ -45,7 +47,6 @@ function renderList() {
     item.append(span1);
     list.append(item);
   });
-  mainHead.innerText = listItems[selected].title;
 }
 
 const addListPopup = document.getElementById("addListPopup");
@@ -78,3 +79,18 @@ addListInput.addEventListener("keypress", (e) => {
     addListInput.blur();
   }
 });
+
+const mainBody = document.getElementById('mainBody');
+
+function renderMain() {
+    const selected = listItems[selected];
+    mainBody.innerHTML = null;
+    mainHead.innerText = selected.title;
+    const ul = document.createElement('ul');
+    selected.items.forEach((e) => {
+        const li = document.createElement('li');
+        li.innerText = e.contents;
+        ul.append(li);
+    })
+    mainBody.append(ul);
+}
