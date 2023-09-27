@@ -542,13 +542,6 @@ video {
   position: relative;
 }
 
-.line-clamp-2 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
 .flex {
   display: flex;
 }
@@ -698,9 +691,19 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 
 .text-lg {
@@ -708,13 +711,13 @@ video {
   line-height: 1.75rem;
 }
 
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
 .font-bold {
   font-weight: 700;
+}
+
+.text-neutral-300 {
+  --tw-text-opacity: 1;
+  color: rgb(212 212 212 / var(--tw-text-opacity));
 }
 
 .text-zinc-700 {
@@ -744,8 +747,16 @@ main {
         30px -30px 60px #ffffff;
 }
 
-#todoList :last-child {
+#todoList :last-child{
   border: none;
+}
+
+#todoList div i{
+  display: none;
+}
+
+#todoList div:hover i{
+  display: flex;
 }
 
 header, footer {
@@ -754,4 +765,12 @@ header, footer {
 
 .selected {
   background-color: #e0e0e0;
+}
+
+ul div i {
+  display: none;
+}
+
+ul div:hover i {
+  display: flex;
 }

@@ -14,8 +14,16 @@ main {
         30px -30px 60px #ffffff;
 }
 
-#todoList :last-child {
+#todoList :last-child{
     border: none;
+}
+
+#todoList div i{
+    display: none;
+}
+
+#todoList div:hover i{
+    display: flex;
 }
 
 header, footer {
@@ -24,4 +32,12 @@ header, footer {
 
 .selected {
     background-color: #e0e0e0;
+}
+
+ul div i {
+    display: none;
+}
+
+ul div:hover i {
+    display: flex;
 }

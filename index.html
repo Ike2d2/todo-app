@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do App</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
     <link rel='stylesheet' type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="remixicon.css">
     <script defer src="script.js"></script>
 </head>
 <body class='flex items-center justify-center h-screen gap-x-14 text-zinc-700'>
@@ -28,13 +28,13 @@
         </footer>
     </nav>
     <main class="flex flex-col rounded-2xl h-4/5 w-1/3 overflow-hidden p-2">
-        <header id="mainHead" class="h-20 w-full bg-zinc-700 rounded-t-xl flex items-center px-14 text-4xl">
+        <header id="mainHead" class="h-20 w-full bg-zinc-700 rounded-t-xl flex flex-shrink-0 items-center px-14 text-4xl">
 
         </header>
-        <div id="mainBody" class="flex-grow overflow-auto">
+        <div id="mainBody" class="flex flex-col flex-grow overflow-auto py-2">
 
         </div>
-        <footer class="h-14 w-full bg-zinc-700 rounded-b-xl">
+        <footer class="h-14 w-full bg-zinc-700 rounded-b-xl flex-shrink-0">
 
         </footer>
     </main>
