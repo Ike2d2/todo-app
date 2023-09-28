@@ -5,13 +5,13 @@
 body,
 #sideNav,
 main, #addListPopup {
-    background-color: #eeeeee;
+    @apply bg-secondary dark:bg-primary;
+    transition: background-color .3s, color .3s, box-shadow .3s;
 }
 
 #sideNav,
 main {
-    box-shadow: -30px 30px 60px #cacaca,
-        30px -30px 60px #ffffff;
+    @apply shadow-light dark:shadow-dark;
 }
 
 #todoList :last-child{
@@ -27,11 +27,11 @@ main {
 }
 
 header, footer {
-    color:#eeeeee;
+    @apply text-secondary dark:text-primary
 }
 
 .selected {
-    background-color: #e0e0e0;
+    @apply bg-sel-light dark:bg-sel-dark;
 }
 
 ul div i {

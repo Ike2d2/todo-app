@@ -1,7 +1,7 @@
 "use strict"
 
 const list = document.getElementById("todoList");
-const mainHead = document.getElementById("mainHead");
+const mainHeadSpan = document.getElementById("mainHeadSpan");
 
 let selected = 0;
 function setSelected(x) {
@@ -92,7 +92,7 @@ function addTaskItem() {
 function renderMain() {
     const toDisplay = listItems[selected];
     mainBody.innerHTML = null;
-    mainHead.innerText = toDisplay.title;
+    mainHeadSpan.innerText = toDisplay.title;
     const ul = document.createElement('ul');
     toDisplay.items.forEach((e, i) => {
         const div = document.createElement('div');
@@ -128,3 +128,10 @@ function renderMain() {
     mainBody.append(ul);
     mainBody.append(addTask);
 }
+
+const darkMode = document.getElementById('darkMode');
+darkMode.addEventListener('click', () => {
+    darkMode.classList.toggle("ri-sun-line");
+    darkMode.classList.toggle("ri-moon-line");
+    document.documentElement.classList.toggle('dark');
+})

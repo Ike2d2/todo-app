@@ -1,8 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
 content: ["*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: 'rgb(63,63,70)',
+        secondary: '#eeeeee',
+        'sel-light': '#e0e0e0',
+        'sel-dark': '#313137'
+      },
+      boxShadow: {
+        light: '-30px 30px 60px #cacaca, 30px -30px 60px #ffffff',
+        dark: '-30px 30px 60px #36363c, 30px -30px 60px #484851'
+      }
+    },
   },
   plugins: [],
 }
