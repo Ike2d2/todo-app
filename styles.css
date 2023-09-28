@@ -821,6 +821,10 @@ ul div:hover i {
   display: flex;
 }
 
+.dark {
+  color-scheme: dark;
+}
+
 :is(.dark .dark\:divide-darker) > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(54 54 60 / var(--tw-divide-opacity));

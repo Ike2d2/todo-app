@@ -43,3 +43,7 @@ ul div i {
 ul div:hover i {
   display: flex;
 }
+
+.dark {
+  color-scheme: dark;
+}
