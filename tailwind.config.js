@@ -8,7 +8,8 @@ content: ["*.{html,js}"],
         primary: 'rgb(63,63,70)',
         secondary: '#eeeeee',
         'sel-light': '#e0e0e0',
-        'sel-dark': '#313137'
+        'sel-dark': '#313137',
+        darker: '#36363c'
       },
       boxShadow: {
         light: '-30px 30px 60px #cacaca, 30px -30px 60px #ffffff',

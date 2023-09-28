@@ -24,28 +24,35 @@ function renderList() {
     list.innerHTML = null;
     listItems.forEach((e, i) => {
         const item = document.createElement("div");
-        item.className = `flex flex-col h-20 w-full flex-shrink-0 px-1 border-b-2${i === selected ? " selected" : ""
+        item.className = `flex h-20 w-full flex-shrink-0 px-1${i === selected ? " selected" : ""
             }`;
 
         item.addEventListener("click", () => {
             setSelected(i);
         });
 
+        const textWrap = document.createElement("div");
+        textWrap.className = "flex flex-col grow items-start";
+
         const span1 = document.createElement("span");
         span1.className = "font-bold text-lg";
         span1.innerText = e.title;
+
+        const span2 = document.createElement("span");
+        span2.innerText = e.items[0] ? e.items[0].contents : '';
 
         const buttons = document.createElement('div');
         buttons.className = 'buttons flex items-center justify-center text-3xl';
 
         const edit = document.createElement('i');
-        edit.className = "ri-edit-line text-neutral-300";
+        edit.className = "ri-edit-line";
 
         const trash = document.createElement('i');
-        trash.className = "ri-delete-bin-6-line text-neutral-300";
+        trash.className = "ri-delete-bin-6-line";
 
+        textWrap.append(span1, span2);
         buttons.append(edit, trash);
-        item.append(span1, buttons);
+        item.append(textWrap, buttons);
         list.append(item);
     });
 }
@@ -94,10 +101,11 @@ function renderMain() {
     mainBody.innerHTML = null;
     mainHeadSpan.innerText = toDisplay.title;
     const ul = document.createElement('ul');
+    ul.className = 'divide-y-2 dark:divide-darker'
     toDisplay.items.forEach((e, i) => {
         const div = document.createElement('div');
         div.innerText = e.contents;
-        div.className = 'flex items-center justify-center h-20 border-b-2';
+        div.className = 'flex items-center justify-center h-20';
 
         const task = document.createElement('div');
         task.className = 'flex items-center justify-center h-full w-full flex-grow-1'
@@ -109,10 +117,10 @@ function renderMain() {
         buttons.className = 'buttons flex items-center justify-center text-3xl w-16';
 
         const edit = document.createElement('i');
-        edit.className = "ri-edit-line text-neutral-300";
+        edit.className = "ri-edit-line";
 
         const trash = document.createElement('i');
-        trash.className = "ri-delete-bin-6-line text-neutral-300";
+        trash.className = "ri-delete-bin-6-line";
 
         task.append(taskInput);
         buttons.append(edit, trash);
@@ -123,7 +131,7 @@ function renderMain() {
     addTask.className = 'flex items-center justify-center h-20 flex-shrink-0'
     addTask.addEventListener('click', addTaskItem);
     const i = document.createElement('i');
-    i.className = 'ri-add-fill text-neutral-300 text-5xl';
+    i.className = 'ri-add-fill text-neutral-300 dark:text-darker text-5xl';
     addTask.append(i)
     mainBody.append(ul);
     mainBody.append(addTask);

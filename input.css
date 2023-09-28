@@ -14,10 +14,6 @@ main {
     @apply shadow-light dark:shadow-dark;
 }
 
-#todoList :last-child{
-    border: none;
-}
-
 #todoList div i{
     display: none;
 }
@@ -27,7 +23,7 @@ main {
 }
 
 header, footer {
-    @apply text-secondary dark:text-primary
+    @apply text-secondary;
 }
 
 .selected {
