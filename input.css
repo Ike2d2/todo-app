@@ -2,41 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    transition: background-color .3s, color .3s, box-shadow .3s, border-color .3s, scrollbar-track-color .3s;
+* {
+  transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s,
+    color 50ms;
 }
 
 body,
 #sideNav,
-main, #addListPopup {
-    @apply bg-secondary dark:bg-primary;
+main,
+#addListPopup {
+  @apply bg-secondary dark:bg-primary;
 }
 
 #sideNav,
 main {
-    @apply shadow-light dark:shadow-dark;
+  @apply shadow-light dark:shadow-dark;
 }
 
-#todoList div i{
-    display: none;
+#todoList div i {
+  display: none;
 }
 
-#todoList div:hover i{
-    display: flex;
+#todoList div:hover i {
+  display: flex;
 }
 
-header, footer {
-    @apply text-secondary;
+header,
+footer {
+  @apply text-secondary;
 }
 
 .selected {
-    @apply bg-sel-light dark:bg-sel-dark;
+  @apply bg-sel-light dark:bg-sel-dark;
 }
 
 ul div i {
-    display: none;
+  display: none;
 }
 
 ul div:hover i {
-    display: flex;
+  display: flex;
 }

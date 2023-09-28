@@ -754,20 +754,23 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-*{
-  transition: background-color .3s, color .3s, box-shadow .3s, border-color .3s, scrollbar-track-color .3s;
+* {
+  transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s,
+    color 50ms;
 }
 
 body,
 #sideNav,
-main, #addListPopup {
+main,
+#addListPopup {
   --tw-bg-opacity: 1;
   background-color: rgb(238 238 238 / var(--tw-bg-opacity));
 }
 
 :is(.dark body),:is(.dark 
 #sideNav),:is(.dark 
-main),:is(.dark  #addListPopup) {
+main),:is(.dark 
+#addListPopup) {
   --tw-bg-opacity: 1;
   background-color: rgb(63 63 70 / var(--tw-bg-opacity));
 }
@@ -786,15 +789,16 @@ main) {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-#todoList div i{
+#todoList div i {
   display: none;
 }
 
-#todoList div:hover i{
+#todoList div:hover i {
   display: flex;
 }
 
-header, footer {
+header,
+footer {
   --tw-text-opacity: 1;
   color: rgb(238 238 238 / var(--tw-text-opacity));
 }
