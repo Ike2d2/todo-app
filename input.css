@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 *{
-    transition: background-color .3s, color .3s, box-shadow .3s, border-color .3s;
+    transition: background-color .3s, color .3s, box-shadow .3s, border-color .3s, scrollbar-track-color .3s;
 }
 
 body,

@@ -558,6 +558,10 @@ video {
   height: 80%;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .h-full {
   height: 100%;
 }
@@ -683,14 +687,19 @@ video {
   padding-right: 0.25rem;
 }
 
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .pl-14 {
@@ -746,7 +755,7 @@ video {
 }
 
 *{
-  transition: background-color .3s, color .3s, box-shadow .3s, border-color .3s;
+  transition: background-color .3s, color .3s, box-shadow .3s, border-color .3s, scrollbar-track-color .3s;
 }
 
 body,

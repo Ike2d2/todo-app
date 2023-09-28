@@ -1,7 +1,6 @@
 "use strict"
 
-const list = document.getElementById("todoList");
-const mainHeadSpan = document.getElementById("mainHeadSpan");
+// State Variables
 
 let selected = 0;
 function setSelected(x) {
@@ -17,22 +16,19 @@ function setListEdit(x) {
     renderMain();
 }
 
+// List Object Array
+
 const listItems = [];
-function addListItem() {
-    listItems.push({
-        title: 'untitled list',
-        items: [],
-    });
-    listEdit = listItems.length - 1;
-    renderList();
-    renderMain();
-}
+
+// Render List
 
 function renderList() {
+    const list = document.getElementById("todoList");
+
     list.innerHTML = null;
     listItems.forEach((e, i) => {
         const item = document.createElement("div");
-        item.className = `flex h-20 w-full flex-shrink-0 px-1${i === selected ? " selected" : ""}`;
+        item.className = `flex h-20 w-full flex-shrink-0 px-3${i === selected ? " selected" : ""}`;
 
         item.addEventListener("click", () => {
             setSelected(i);
@@ -40,13 +36,21 @@ function renderList() {
 
         if (listEdit === i) {
             const inputWrap = document.createElement('div');
-            inputWrap.className = 'flex items-center justify-center';
+            inputWrap.className = 'flex items-center justify-center h-full w-full';
 
             const input = document.createElement('input');
-            input.setAttribute('type','text');
-            input.addEventListener('click', (e) => {e.stopPropagation()});
+            input.setAttribute('type', 'text');
+            input.setAttribute('placeholder','Enter List Title...');
+            input.addEventListener('click', (e) => { e.stopPropagation() });
             input.addEventListener('blur', () => setListEdit(null));
-            input.className = "px-2 font-bold bg-secondary dark:bg-primary border-2 border-lighter dark:border-darker outline-none";
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    listItems[i].title = input.value;
+                    input.blur();
+                    setSelected(i);
+                }
+            });
+            input.className = "px-2 h-8 font-bold bg-secondary dark:bg-primary border-2 border-lighter dark:border-darker outline-none";
 
             inputWrap.append(input);
             item.append(inputWrap);
@@ -69,6 +73,7 @@ function renderList() {
 
             const edit = document.createElement('i');
             edit.className = "ri-edit-line";
+            edit.addEventListener('click', () => setListEdit(i));
 
             const trash = document.createElement('i');
             trash.className = "ri-delete-bin-6-line";
@@ -81,25 +86,12 @@ function renderList() {
     });
 }
 
-function editListName(e) {
-    e.target.value
-}
-
-const addList = document.getElementById('addList');
-
-addList.addEventListener('click', addListItem)
-
-const mainBody = document.getElementById('mainBody');
-
-function addTaskItem() {
-    listItems[selected].items.push({
-        contents: '',
-        done: false
-    })
-    renderMain();
-}
+// Render Tasks
 
 function renderMain() {
+    const mainBody = document.getElementById('mainBody');
+    const mainHeadSpan = document.getElementById("mainHeadSpan");
+
     const toDisplay = listItems[selected];
     mainBody.innerHTML = null;
     mainHeadSpan.innerText = toDisplay.title;
@@ -140,6 +132,33 @@ function renderMain() {
     mainBody.append(ul);
     mainBody.append(addTask);
 }
+
+// Add List Object
+
+function addListItem() {
+    listItems.push({
+        title: 'untitled list',
+        items: [],
+    });
+    listEdit = listItems.length - 1;
+    renderList();
+    renderMain();
+}
+
+document.getElementById('addList').addEventListener('click', addListItem);
+
+// Add Task To List Object Items Array
+
+function addTaskItem() {
+    listItems[selected].items.push({
+        contents: '',
+        done: false
+    })
+    renderList();
+    renderMain();
+}
+
+// Dark Mode
 
 const darkMode = document.getElementById('darkMode');
 darkMode.addEventListener('click', () => {
