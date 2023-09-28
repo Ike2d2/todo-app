@@ -2,11 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+    transition: background-color .3s, color .3s, box-shadow .3s, border-color .3s;
+}
+
 body,
 #sideNav,
 main, #addListPopup {
     @apply bg-secondary dark:bg-primary;
-    transition: background-color .3s, color .3s, box-shadow .3s;
 }
 
 #sideNav,

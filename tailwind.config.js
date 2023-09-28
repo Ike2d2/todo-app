@@ -9,6 +9,7 @@ content: ["*.{html,js}"],
         secondary: '#eeeeee',
         'sel-light': '#e0e0e0',
         'sel-dark': '#313137',
+        lighter: '#fafafa',
         darker: '#36363c'
       },
       boxShadow: {

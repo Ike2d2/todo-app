@@ -6,18 +6,13 @@
     <title>To-Do App</title>
     <link rel='stylesheet' type="text/css" href="styles.css">
     <link rel="stylesheet" type="text/css" href="remixicon.css">
-    <script defer src="script.js"></script>
+    <script defer src="min.js"></script>
 </head>
 <body class='flex items-center justify-center h-screen gap-x-14 text-primary dark:text-secondary'>
     <nav id="sideNav" class="rounded-2xl h-4/5 w-80 flex flex-col p-2">
         <header class="h-20 w-full bg-primary dark:bg-darker rounded-t-xl flex-shrink-0 flex items-center justify-end p-4">
             <div class="relative">
-                <i id="addList" class="ri-file-add-line text-4xl"></i>
-                <div id="addListPopup" class="hidden absolute flex overflow-visible p-2 rounded-2xl text-primary dark:text-secondary border-2 gap-x-2 border-primary dark:border-secondary">
-                    <input id="addListInput" type="text" placeholder="List Title" class="rounded-md p-2 outline-none border border-primary dark:border-secondary">
-                    <button id="addListButton" class="font-bold"> Add </button>
-                </div>
-
+                <i id="addList" class="ri-add-fill text-4xl"></i>
             </div>
         </header>
         <div id="todoList" class="flex flex-col flex-grow overflow-auto py-2 divide-y-2 dark:divide-darker">
