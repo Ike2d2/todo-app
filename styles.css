@@ -590,6 +590,10 @@ video {
   width: 100%;
 }
 
+.w-3\/4 {
+  width: 75%;
+}
+
 .flex-shrink-0 {
   flex-shrink: 0;
 }
@@ -647,6 +651,10 @@ video {
 
 .overflow-hidden {
   overflow: hidden;
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
 }
 
 .rounded-2xl {

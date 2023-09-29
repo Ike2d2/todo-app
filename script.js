@@ -66,13 +66,14 @@ function renderList() {
             input.focus();
         } else {
             const textWrap = document.createElement("div");
-            textWrap.className = "flex flex-col grow items-start";
+            textWrap.className = "flex flex-col grow items-start overflow-hidden";
 
             const span1 = document.createElement("span");
             span1.className = "font-bold text-lg";
             span1.innerText = e.title;
 
             const span2 = document.createElement("span");
+            span2.className = "overflow-hidden w-3/4 text-ellipsis";
             span2.innerText = e.items[0] ? e.items[0].contents : "";
 
             const buttons = document.createElement("div");
