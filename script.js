@@ -2,10 +2,11 @@
 
 // State Variables
 
-let selected = 0;
+let selected = null;
 function setSelected(x) {
     selected = x;
     renderAll();
+    selected !== null && addTask.classList.remove('hidden');
 }
 
 let listEdit = null;
@@ -69,7 +70,7 @@ function renderList() {
             textWrap.className = "flex flex-col grow items-start overflow-hidden";
 
             const span1 = document.createElement("span");
-            span1.className = "font-bold text-lg";
+            span1.className = "font-bold text-lg overflow-hidden text-ellipsis";
             span1.innerText = e.title;
 
             const span2 = document.createElement("span");
@@ -113,9 +114,9 @@ function renderMain() {
 
     const toDisplay = listItems[selected];
     ul.innerHTML = null;
-    mainHeadSpan.innerText = listItems.length !== 0 ? toDisplay.title : '';
+    mainHeadSpan.innerText = toDisplay ? toDisplay.title : '';
 
-    toDisplay.items.forEach((elem, i) => {
+    toDisplay && toDisplay.items.forEach((elem, i) => {
         const task = document.createElement("div");
         task.className = `flex h-20 w-full flex-shrink-0 px-3`;
 
@@ -145,11 +146,25 @@ function renderMain() {
             ul.append(task);
             input.focus();
         } else {
+            const checkWrap = document.createElement("div");
+            checkWrap.className = "flex items-center justify-center w-10 me-6";
+
+            const check = document.createElement("i");
+            check.className = `${elem.done ? 'ri-checkbox-line ' : 'ri-checkbox-blank-line'} text-4xl`;
+            check.addEventListener("click", (e) => {
+                e.target.classList.toggle("ri-checkbox-blank-line");
+                e.target.classList.toggle("ri-checkbox-line");
+                elem.done = !elem.done;
+                renderMain();
+            })
+
+            checkWrap.append(check);
+
             const textWrap = document.createElement("div");
             textWrap.className = "flex grow items-center";
 
             const span1 = document.createElement("span");
-            span1.className = "font-bold text-lg";
+            span1.className = `font-bold decoration-2 text-lg${elem.done ? ' line-through' : ''}`;
             span1.innerText = elem.contents;
 
             const buttons = document.createElement("div");
@@ -175,7 +190,7 @@ function renderMain() {
 
             textWrap.append(span1);
             buttons.append(edit, trash);
-            task.append(textWrap, buttons);
+            task.append(checkWrap, textWrap, buttons);
             ul.append(task);
         }
     });
@@ -186,12 +201,12 @@ const addTask = document.getElementById('addTask')
 // Add List Object
 
 function addListItem() {
-    listItems.length === 0 && addTask.classList.toggle('hidden');
     listItems.push({
         title: `untitled ${listItems.length}`,
         items: [],
     });
     setListEdit(listItems.length - 1)
+    setSelected(listItems.length - 1)
 }
 document.getElementById("addList").addEventListener("click", addListItem);
 
@@ -200,8 +215,8 @@ document.getElementById("addList").addEventListener("click", addListItem);
 function removeListItem(x) {
     const filter = listItems.filter((e, i) => i !== x);
     listItems = filter;
-    listItems.length === 0 && addTask.classList.toggle('hidden');
-    selected === x ? setSelected(0) : renderAll();
+    setSelected(null)
+    selected === null && addTask.classList.add('hidden');
 }
 
 // Remove Task Object
@@ -210,6 +225,19 @@ function removeTaskItem(x) {
     const filter = listItems[selected].items.filter((e, i) => i !== x);
     listItems[selected].items = filter;
     renderMain();
+}
+
+// Remove Completed Task Objects
+
+const clearBtn = document.getElementById("clear-all");
+clearBtn.addEventListener("click", clearAll);
+
+function clearAll() {
+    if (listItems[selected]) {
+        const filter = listItems[selected].items.filter((e) => e.done === false)
+        listItems[selected].items = filter;
+        renderMain();
+    }
 }
 
 // Add Task To List Object Items Array
@@ -229,13 +257,13 @@ addTask.addEventListener("click", addTaskItem);
 const darkMode = document.getElementById("darkMode");
 darkMode.addEventListener("click", () => {
     darkMode.classList.toggle("ri-sun-line");
-    darkMode.classList.toggle("ri-moon-line");
+    darkMode.classList.toggle("ri-moon-clear-line");
     document.documentElement.classList.toggle("dark");
 });
 
 // QOL
 
-function renderAll(){
+function renderAll() {
     renderList();
     renderMain();
 }

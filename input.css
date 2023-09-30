@@ -36,11 +36,13 @@ footer {
   @apply bg-sel-light dark:bg-sel-dark;
 }
 
-ul div i {
+ul div .ri-delete-bin-6-line,
+ul div .ri-edit-line {
   display: none;
 }
 
-ul div:hover i {
+ul div:hover .ri-delete-bin-6-line,
+ul div:hover .ri-edit-line {
   display: flex;
 }
 

@@ -538,6 +538,26 @@ video {
   position: relative;
 }
 
+.me-10 {
+  -webkit-margin-end: 2.5rem;
+          margin-inline-end: 2.5rem;
+}
+
+.me-6 {
+  -webkit-margin-end: 1.5rem;
+          margin-inline-end: 1.5rem;
+}
+
+.ms-2 {
+  -webkit-margin-start: 0.5rem;
+          margin-inline-start: 0.5rem;
+}
+
+.me-2 {
+  -webkit-margin-end: 0.5rem;
+          margin-inline-end: 0.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -578,8 +598,8 @@ video {
   width: 33.333333%;
 }
 
-.w-16 {
-  width: 4rem;
+.w-3\/4 {
+  width: 75%;
 }
 
 .w-80 {
@@ -590,8 +610,12 @@ video {
   width: 100%;
 }
 
-.w-3\/4 {
-  width: 75%;
+.w-20 {
+  width: 5rem;
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .flex-shrink-0 {
@@ -604,6 +628,18 @@ video {
 
 .grow {
   flex-grow: 1;
+}
+
+.scale-100 {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-50 {
+  --tw-scale-x: .5;
+  --tw-scale-y: .5;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .flex-col {
@@ -698,11 +734,6 @@ video {
   padding: 1rem;
 }
 
-.px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -726,11 +757,6 @@ video {
   padding-right: 2rem;
 }
 
-.ps-4 {
-  -webkit-padding-start: 1rem;
-          padding-inline-start: 1rem;
-}
-
 .text-3xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -751,6 +777,16 @@ video {
   line-height: 1.75rem;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -763,6 +799,18 @@ video {
 .text-primary {
   --tw-text-opacity: 1;
   color: rgb(63 63 70 / var(--tw-text-opacity));
+}
+
+.line-through {
+  text-decoration-line: line-through;
+}
+
+.decoration-4 {
+  text-decoration-thickness: 4px;
+}
+
+.decoration-2 {
+  text-decoration-thickness: 2px;
 }
 
 .outline-none {
@@ -838,11 +886,13 @@ footer {
   background-color: rgb(49 49 55 / var(--tw-bg-opacity));
 }
 
-ul div i {
+ul div .ri-delete-bin-6-line,
+ul div .ri-edit-line {
   display: none;
 }
 
-ul div:hover i {
+ul div:hover .ri-delete-bin-6-line,
+ul div:hover .ri-edit-line {
   display: flex;
 }
 
