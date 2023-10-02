@@ -31,14 +31,19 @@
             <ul id="ul" class="divide-y-2 dark:divide-darker">
 
             </ul>
-            <div id="addTask" class="hidden flex items-center justify-center h-20 flex-shrink-0">
-                <i class="ri-add-fill text-neutral-300 dark:text-darker text-5xl"></i>
+            <div class="flex items-center justify-center h-20 flex-shrink-0">
+                <button id="addTask" class="hidden">
+                    <i class="ri-add-fill text-neutral-300 dark:text-darker text-5xl"></i>
+                </button>
+
             </div>
         </div>
         <footer
             class="h-14 w-full bg-primary dark:bg-darker rounded-b-xl flex flex-shrink-0 items-center justify-end pr-8 text-4xl">
             <span class="text-sm font-bold me-2">Clear Completed Tasks</span>
-            <i id="clear-all" class="ri-delete-bin-6-line"></i>
+            <button id="clear-all">
+                <i id="clear-all" class="ri-delete-bin-6-line"></i>
+            </button>
         </footer>
     </main>
 </body>

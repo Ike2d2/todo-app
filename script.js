@@ -24,6 +24,13 @@ function setTaskEdit(x) {
 // List Object Array
 
 let listItems = [];
+if (localStorage.getItem(0) !== null) {
+    listItems = JSON.parse(localStorage.getItem(0));
+    console.log(listItems);
+}
+function save() {localStorage.setItem(0, JSON.stringify(listItems))}
+listItems.length > 0 && renderAll();
+
 
 // Render List
 
@@ -54,6 +61,7 @@ function renderList() {
             input.addEventListener("keypress", (e) => {
                 if (e.key === "Enter") {
                     input.value !== '' && (listItems[i].title = input.value);
+                    save();
                     input.blur();
                     setSelected(i);
                 }
@@ -135,6 +143,7 @@ function renderMain() {
             input.addEventListener("keypress", (e) => {
                 if (e.key === "Enter") {
                     input.value !== '' && (elem.contents = input.value);
+                    save();
                     input.blur();
                 }
             });
@@ -155,6 +164,7 @@ function renderMain() {
                 e.target.classList.toggle("ri-checkbox-blank-line");
                 e.target.classList.toggle("ri-checkbox-line");
                 elem.done = !elem.done;
+                save();
                 renderMain();
             })
 
@@ -205,6 +215,7 @@ function addListItem() {
         title: `untitled ${listItems.length}`,
         items: [],
     });
+    save();
     setListEdit(listItems.length - 1)
     setSelected(listItems.length - 1)
 }
@@ -215,6 +226,7 @@ document.getElementById("addList").addEventListener("click", addListItem);
 function removeListItem(x) {
     const filter = listItems.filter((e, i) => i !== x);
     listItems = filter;
+    save();
     setSelected(null)
     selected === null && addTask.classList.add('hidden');
 }
@@ -224,6 +236,7 @@ function removeListItem(x) {
 function removeTaskItem(x) {
     const filter = listItems[selected].items.filter((e, i) => i !== x);
     listItems[selected].items = filter;
+    save();
     renderMain();
 }
 
@@ -236,6 +249,7 @@ function clearAll() {
     if (listItems[selected]) {
         const filter = listItems[selected].items.filter((e) => e.done === false)
         listItems[selected].items = filter;
+        save();
         renderMain();
     }
 }
@@ -247,6 +261,7 @@ function addTaskItem() {
         contents: "untitled task",
         done: false,
     });
+    save();
     setTaskEdit(listItems[selected].items.length - 1);
 }
 
