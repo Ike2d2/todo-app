@@ -9,12 +9,6 @@ function setSelected(x) {
     selected !== null && addTask.classList.remove('hidden');
 }
 
-let listEdit = null;
-function setListEdit(x) {
-    listEdit = x;
-    renderAll();
-}
-
 let taskEdit = null;
 function setTaskEdit(x) {
     taskEdit = x;
@@ -34,11 +28,12 @@ listItems.length > 0 && renderAll();
 // Render List
 
 function renderList() {
+    console.log('rendering list')
     const list = document.getElementById("todoList");
 
     list.innerHTML = null;
     listItems.forEach((e, i) => {
-        list.append(createListItem({selected, setSelected, listEdit, setListEdit, e, i}));
+        list.append(createListItem({selected, setSelected, removeListItem, renderList, e, i}));
     });
 }
 
@@ -144,7 +139,6 @@ function addListItem() {
         items: [],
     });
     save();
-    setListEdit(listItems.length - 1)
     setSelected(listItems.length - 1)
 }
 document.getElementById("addList").addEventListener("click", addListItem);

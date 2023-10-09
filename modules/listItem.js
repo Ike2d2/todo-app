@@ -1,4 +1,10 @@
-export function createListItem(...props) {
+export function createListItem({ ...props }) {
+    let editing = props.editing;
+    function setEditing(x) {
+        editing = x;
+        props.renderList();
+    }
+
     const item = document.createElement("div");
     item.className = `flex h-20 w-full flex-shrink-0 px-3${props.i === props.selected ? " selected" : ""
         }`;
@@ -7,7 +13,7 @@ export function createListItem(...props) {
         props.setSelected(props.i);
     });
 
-    if (props.listEdit === props.i) {
+    if (editing) {
         const inputWrap = document.createElement("div");
         inputWrap.className = "flex items-center justify-center h-full w-full";
 
@@ -17,7 +23,7 @@ export function createListItem(...props) {
         input.addEventListener("click", (e) => {
             e.stopPropagation();
         });
-        input.addEventListener("blur", () => props.setListEdit(null));
+        input.addEventListener("blur", () => setEditing(false));
         input.addEventListener("keypress", (e) => {
             if (e.key === "Enter") {
                 input.value !== '' && (listItems[props.i].title = input.value);
@@ -31,6 +37,7 @@ export function createListItem(...props) {
 
         inputWrap.append(input);
         item.append(inputWrap);
+        setTimeout(() => { input.focus() }, 0)
         return item;
     } else {
         const textWrap = document.createElement("div");
@@ -48,16 +55,16 @@ export function createListItem(...props) {
         buttons.className = "buttons flex items-center justify-center text-3xl";
 
         const edit = document.createElement("button");
-        const editIcon = document.createElement('props.i');
+        const editIcon = document.createElement('i');
         editIcon.className = "ri-edit-line";
         edit.addEventListener("click", (e) => {
             e.stopPropagation();
-            props.setListEdit(props.i);
+            setEditing(true);
         });
         edit.append(editIcon);
 
         const trash = document.createElement("button");
-        const trashIcon = document.createElement("props.i");
+        const trashIcon = document.createElement("i");
         trashIcon.className = "ri-delete-bin-6-line";
         trash.addEventListener("click", (e) => {
             e.stopPropagation();
