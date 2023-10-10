@@ -78,3 +78,31 @@ export function createListItem({ ...props }) {
         return item;
     }
 }
+
+class ListItem extends HTMLElement{
+    constructor(){
+        super();
+        this.editing = this.hasAttribute('editing')
+    }
+
+    static get observedAttributes() {
+        return ['editing'];
+    }
+
+    connectedCallback(){
+        render();
+    }
+
+    render(){
+        this.innerHTML= null;
+        const frag = document.createDocumentFragment();
+        if (this.editing) {
+
+        } else {
+
+        }
+        this.append(frag);
+    }
+}
+
+customElements.define("list-item", ListItem);
