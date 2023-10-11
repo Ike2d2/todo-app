@@ -1,4 +1,4 @@
-import { createListItem } from './modules/listItem.js';
+import './modules/listItem.js';
 
 // State Variables
 
@@ -33,7 +33,9 @@ function renderList() {
 
     list.innerHTML = null;
     listItems.forEach((e, i) => {
-        list.append(createListItem({selected, setSelected, removeListItem, renderList, e, i}));
+        let item = document.createElement('list-item')
+        item.props = {e, i, save, selected, setSelected, listItems, removeListItem};
+        list.append(item);
     });
 }
 
