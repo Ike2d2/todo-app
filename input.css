@@ -5,6 +5,23 @@
 * {
   transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s,
     color 50ms;
+  scrollbar-width: thin;
+  scrollbar-color: #36363c transparent;
+}
+
+/* Width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track Color */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-darker;
 }
 
 body,

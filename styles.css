@@ -534,6 +534,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.static {
+  position: static;
+}
+
 .relative {
   position: relative;
 }
@@ -554,6 +558,10 @@ video {
 
 .contents {
   display: contents;
+}
+
+.list-item {
+  display: list-item;
 }
 
 .hidden {
@@ -791,6 +799,27 @@ video {
 * {
   transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s,
     color 50ms;
+  scrollbar-width: thin;
+  scrollbar-color: #36363c transparent;
+}
+
+/* Width */
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track Color */
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+  --tw-bg-opacity: 1;
+  background-color: rgb(54 54 60 / var(--tw-bg-opacity));
 }
 
 body,
