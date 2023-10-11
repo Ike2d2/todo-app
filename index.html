@@ -1,51 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do App</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="stylesheet" type="text/css" href="remixicon.css" />
     <script defer src="script.js" type="module"></script>
-</head>
+  </head>
 
-<body class="flex items-center justify-center h-screen gap-x-14 text-primary dark:text-secondary">
+  <body
+    class="flex items-center justify-center h-screen gap-x-14 text-primary dark:text-secondary"
+  >
     <nav id="sideNav" class="rounded-2xl h-4/5 w-80 flex flex-col p-2">
-        <header
-            class="h-20 w-full bg-primary dark:bg-darker rounded-t-xl flex-shrink-0 flex items-center justify-end p-4">
-            <div class="relative">
-                <i id="addList" class="ri-add-fill text-4xl"></i>
-            </div>
-        </header>
-        <div id="todoList" class="flex flex-col flex-grow overflow-auto py-2 divide-y-2 dark:divide-darker"></div>
-        <footer class="h-14 w-full bg-primary dark:bg-darker rounded-b-xl flex-shrink-0"></footer>
+      <header
+        class="h-20 w-full bg-primary dark:bg-darker rounded-t-xl flex-shrink-0 flex items-center justify-end p-4"
+      >
+        <div class="relative">
+          <i id="addList" class="ri-add-fill text-4xl"></i>
+        </div>
+      </header>
+      <div
+        id="todoList"
+        class="flex flex-col flex-grow overflow-auto py-2 divide-y-2 dark:divide-darker"
+      ></div>
+      <footer
+        class="h-14 w-full bg-primary dark:bg-darker rounded-b-xl flex-shrink-0"
+      ></footer>
     </nav>
     <main class="flex flex-col rounded-2xl h-4/5 w-1/3 overflow-hidden p-2">
-        <header
-            class="h-20 w-full bg-primary dark:bg-darker rounded-t-xl flex flex-shrink-0 items-center justify-between pl-14 pr-8 text-4xl">
-            <span id="mainHeadSpan" class="text-ellipsis overflow-hidden"></span>
-            <i id="darkMode" class="ri-moon-clear-line"></i>
-        </header>
-        <div id="mainBody" class="flex flex-col flex-grow overflow-auto py-2">
-            <ul id="ul" class="divide-y-2 dark:divide-darker">
-
-            </ul>
-            <div class="flex items-center justify-center h-20 flex-shrink-0">
-                <button id="addTask" class="hidden">
-                    <i class="ri-add-fill text-neutral-300 dark:text-darker text-5xl"></i>
-                </button>
-
-            </div>
+      <header
+        class="h-20 w-full bg-primary dark:bg-darker rounded-t-xl flex flex-shrink-0 items-center justify-between pl-14 pr-8 text-4xl"
+      >
+        <span id="mainHeadSpan" class="text-ellipsis overflow-hidden"></span>
+        <i id="darkMode" class="ri-moon-clear-line"></i>
+      </header>
+      <div id="mainBody" class="flex flex-col flex-grow overflow-auto py-2">
+        <ul id="ul" class="divide-y-2 dark:divide-darker"></ul>
+        <div class="flex items-center justify-center h-20 flex-shrink-0">
+          <button id="addTask" class="hidden">
+            <i
+              class="ri-add-fill text-neutral-300 dark:text-darker text-5xl"
+            ></i>
+          </button>
         </div>
-        <footer
-            class="h-14 w-full bg-primary dark:bg-darker rounded-b-xl flex flex-shrink-0 items-center justify-end pr-8 text-4xl">
-            <span class="text-sm font-bold me-2">Clear Completed Tasks</span>
-            <button id="clear-all">
-                <i id="clear-all" class="ri-delete-bin-6-line"></i>
-            </button>
-        </footer>
+      </div>
+      <footer
+        class="h-14 w-full bg-primary dark:bg-darker rounded-b-xl flex flex-shrink-0 items-center justify-end pr-8 text-4xl"
+      >
+        <span class="text-sm font-bold me-2">Clear Completed Tasks</span>
+        <button id="clear-all">
+          <i id="clear-all" class="ri-delete-bin-6-line"></i>
+        </button>
+      </footer>
     </main>
-</body>
-
+  </body>
 </html>
