@@ -538,6 +538,10 @@ video {
   position: static;
 }
 
+.static {
+  position: static;
+}
+
 .relative {
   position: relative;
 }
@@ -618,6 +622,10 @@ video {
 
 .grow {
   flex-grow: 1;
+}
+
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .flex-col {

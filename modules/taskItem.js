@@ -11,6 +11,7 @@ export class TaskItem extends HTMLElement {
     }
 
     connectedCallback() {
+        this.props.elem.done && this.setAttribute('done','')
         this.render();
     }
 
@@ -60,7 +61,7 @@ export class TaskItem extends HTMLElement {
             check.className = `${this.props.elem.done ? 'ri-checkbox-line ' : 'ri-checkbox-blank-line'} text-4xl`;
             check.addEventListener("click", (e) => {
                 this.props.elem.done = !this.props.elem.done;
-                this.setAttribute('done','')
+                this.toggleAttribute('done')
                 this.props.save();
             })
 

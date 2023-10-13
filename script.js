@@ -10,12 +10,6 @@ function setSelected(x) {
     selected !== null && addTask.classList.remove('hidden');
 }
 
-let taskEdit = null;
-function setTaskEdit(x) {
-    taskEdit = x;
-    renderAll();
-}
-
 // List Object Array
 
 let listItems = [];
@@ -34,7 +28,7 @@ function renderList() {
     list.innerHTML = null;
     listItems.forEach((e, i) => {
         let item = document.createElement('list-item');
-        item.props = {e, i, save, selected, setSelected, listItems, removeListItem};
+        item.props = { e, i, save, selected, setSelected, listItems, removeListItem };   
         list.append(item);
     });
 }
@@ -51,7 +45,7 @@ function renderMain() {
 
     toDisplay && toDisplay.items.forEach((elem, i) => {
         let task = document.createElement('task-item');
-        task.props = {elem, i, save, removeTaskItem}
+        task.props = { elem, i, save, removeTaskItem }
         ul.append(task);
     });
 }
@@ -95,13 +89,12 @@ const clearBtn = document.getElementById("clear-all");
 clearBtn.addEventListener("click", clearAll);
 
 function clearAll() {
-    if (listItems[selected]) {
-        const filter = listItems[selected].items.filter((e) => e.done === false)
-        listItems[selected].items = filter;
-        save();
-        renderMain();
-    }
+    const filter = listItems[selected].items.filter((e) => e.done === false)
+    listItems[selected].items = filter;
+    save();
+    renderMain();
 }
+
 
 // Add Task To List Object Items Array
 
@@ -111,7 +104,7 @@ function addTaskItem() {
         done: false,
     });
     save();
-    setTaskEdit(listItems[selected].items.length - 1);
+    renderAll();
 }
 
 addTask.addEventListener("click", addTaskItem);
